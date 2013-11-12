@@ -11,7 +11,6 @@ module RedmineTouch
 
     def update_field(context)
       @issue = context[:issue]
-      @bridge_id = CustomValue.by_name(@issue.id,'BridgeID')
       @journal = context[:journal]
 
       fullname = "#{@journal.user.firstname} #{@journal.user.lastname}" rescue '--'
