@@ -13,13 +13,13 @@ module RedmineTouch
       @issue = context[:issue]
       @journal = context[:journal]
 
-      fullname = "#{@journal.user.firstname} #{@journal.user.lastname}" rescue '--'
+      userid = @journal.user.id
       cf = CustomField.find_by_name('Updated By')
       cv = CustomValue.where(:customized_type => "Issue", :customized_id => @issue.id, :custom_field_id => cf.id).last
       if cv.present?
-        cv.update_attribute :value, fullname
+        cv.update_attribute :value, userid
       else
-        CustomValue.create!(:customized_type => "Issue", :customized_id => @issue.id, :value => fullname, :custom_field_id => cf.id)
+        CustomValue.create!(:customized_type => "Issue", :customized_id => @issue.id, :value => userid, :custom_field_id => cf.id)
       end
     end
   end
