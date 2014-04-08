@@ -4,7 +4,7 @@ Redmine-Touch
 Redmine plugin to add missing function of "Last updated by"
 
 ### Instalation
- - Create custom field *Updated By* with format *User*
+ - Create custom field **Updated By** with format **User**
  - ...
  - PROFIT!
 
