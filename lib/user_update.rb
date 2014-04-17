@@ -13,8 +13,9 @@ module RedmineTouch
       @issue = context[:issue]
       @journal = context[:journal]
 
-      userid = @journal.user.id
-      cf = CustomField.find_by_name('Updated By')
+      userid = (@journal.nil?) ? @issue.author.id : @journal.user.id
+
+      cf = CustomField.find(:first, :conditions => ["lower(name) = ?", "Updated by".downcase])
       cv = CustomValue.where(:customized_type => "Issue", :customized_id => @issue.id, :custom_field_id => cf.id).last
       if cv.present?
         cv.update_attribute :value, userid
