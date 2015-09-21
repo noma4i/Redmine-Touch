@@ -14,3 +14,6 @@ Redmine plugin to add missing function of "Last updated by"
   You can use this custom field is filters, search o just show column of *Updated By*
 
 ![Orphans list](screenshots/feature.png?raw=true)
+
+### Caveats
+ - If you can't see new field created make sure you run `bundle exec rake redmine:plugins:migrate RAILS_ENV=production`
